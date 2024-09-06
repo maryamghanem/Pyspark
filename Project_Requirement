@@ -1,20 +1,20 @@
-Streaming & GraphFrames:
+Streaming & GraphFrames
+
 Schema Definition:
-
 Define a schema for each folder: VertFinalExam (Vertices) and EdgesFinalExam (Edges).
-Folder Setup:
 
+Folder Setup:
 Create two empty folders to use as sources for streaming data:
 Folder 1 for vertices (MyFirstFolder).
 Folder 2 for edges (MySecondFolder).
-Streaming Readers:
 
+Streaming Readers:
 Set up two streaming readers:
 df1: Reads from MyFirstFolder.
 df2: Reads from MySecondFolder.
 These will serve as streaming DataFrames for vertices and edges.
-Data Processing:
 
+Data Processing:
 Edges:
 Add a column for delay categories:
 Early: Negative delay values.
@@ -22,26 +22,26 @@ Late: Positive delay values.
 OnTime: Zero delay values.
 Vertices:
 Remove rows where the state is an empty string (state="").
-Writing to Sinks:
 
+Writing to Sinks:
 Set up writers for:
 The final streaming Edges DataFrame in parquet format.
 The final streaming Vertices DataFrame in parquet format.
-Execution:
 
+Execution:
 Start a query for the Edges writer:
 Copy EdgesFinalExam data to the streaming source.
 Verify the data is written to the sink and then stop the query.
 Start a query for the Vertices writer:
 Copy VertFinalExam data to the streaming source.
 Verify the data is written to the sink and then stop the query.
+
 Static DataFrames:
-
 Read the parquet data from the sinks into static DataFrames for vertices and edges.
+
 GraphFrame Creation:
-
 Create a GraphFrame using the static vertices and edges DataFrames.
-PageRank Algorithm:
 
+PageRank Algorithm:
 Apply the PageRank algorithm with maxIter=5.
 Extract the top 10 most important vertices, ordered by rank (descending).
